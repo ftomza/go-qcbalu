@@ -15,7 +15,6 @@ type entWalletRepository struct {
 }
 
 func NewEntWalletRepository(conn *ent.Client) domain.WalletRepository {
-	conn.Wallet.Use()
 	return &entWalletRepository{conn}
 }
 

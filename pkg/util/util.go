@@ -1,4 +1,4 @@
-package entplus
+package util
 
 import (
 	"github.com/jinzhu/copier"

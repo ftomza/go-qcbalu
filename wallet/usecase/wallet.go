@@ -99,7 +99,7 @@ func (w *walletUsecase) DebtBalanceByUserID(ctx context.Context, userID uuid.UUI
 				return domain.ErrInsufficientFunds
 			}
 
-			item, err = w.walletRepository.Update(ctx, item)
+			item, err = w.walletRepository.Update(ctx, itemStore)
 			return err
 		})
 	})
@@ -117,7 +117,7 @@ func (w *walletUsecase) CredBalanceByUserID(ctx context.Context, userID uuid.UUI
 
 			itemStore.Balance = itemStore.Balance + sum
 
-			item, err = w.walletRepository.Update(ctx, item)
+			item, err = w.walletRepository.Update(ctx, itemStore)
 			return err
 		})
 	})

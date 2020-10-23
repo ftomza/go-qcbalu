@@ -1,0 +1,11 @@
+add_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd", "sum":  100}
+add_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4c1", "sum":  100}
+del_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4c1"}
+debt_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd", "sum":  10}
+cred_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd", "sum":  40}
+lock_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd"}
+cred_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd", "sum":  40}
+unlock_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd"}
+debt_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd", "sum":  50}
+get_balance_by_user_id {"user_id":  "b669b7c6-9d19-4024-b37d-5af23180f4cd"}
+quit

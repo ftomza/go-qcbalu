@@ -13,6 +13,83 @@ var (
 	ErrLocked            = errors.New("wallet: Item blocked")
 )
 
+type DeliveryRPCWallet string
+
+const (
+	DeliveryRPCWalletAddBalanceByUserId    DeliveryRPCWallet = "add_balance_by_user_id"
+	DeliveryRPCWalletDelBalanceByUserId    DeliveryRPCWallet = "del_balance_by_user_id"
+	DeliveryRPCWalletGetBalanceByUserId    DeliveryRPCWallet = "get_balance_by_user_id"
+	DeliveryRPCWalletDebtBalanceByUserId   DeliveryRPCWallet = "debt_balance_by_user_id"
+	DeliveryRPCWalletCredBalanceByUserId   DeliveryRPCWallet = "cred_balance_by_user_id"
+	DeliveryRPCWalletLockBalanceByUserId   DeliveryRPCWallet = "lock_balance_by_user_id"
+	DeliveryRPCWalletUnlockBalanceByUserId DeliveryRPCWallet = "unlock_balance_by_user_id"
+)
+
+func (e DeliveryRPCWallet) IsValid() bool {
+	switch e {
+	case DeliveryRPCWalletAddBalanceByUserId,
+		DeliveryRPCWalletDelBalanceByUserId,
+		DeliveryRPCWalletGetBalanceByUserId,
+		DeliveryRPCWalletDebtBalanceByUserId,
+		DeliveryRPCWalletCredBalanceByUserId,
+		DeliveryRPCWalletLockBalanceByUserId,
+		DeliveryRPCWalletUnlockBalanceByUserId:
+		return true
+	}
+	return false
+}
+
+func (e DeliveryRPCWallet) String() string {
+	return string(e)
+}
+
+type EventNameWallet string
+
+const (
+	EventNameWalletBalanceSelf   EventNameWallet = "self"
+	EventNameWalletBalanceDebt   EventNameWallet = "debt"
+	EventNameWalletBalanceCred   EventNameWallet = "cred"
+	EventNameWalletBalanceLock   EventNameWallet = "lock"
+	EventNameWalletBalanceUnlock EventNameWallet = "unlock"
+)
+
+func (e EventNameWallet) IsValid() bool {
+	switch e {
+	case EventNameWalletBalanceDebt,
+		EventNameWalletBalanceCred,
+		EventNameWalletBalanceLock,
+		EventNameWalletBalanceUnlock:
+		return true
+	}
+	return false
+}
+
+func (e EventNameWallet) String() string {
+	return string(e)
+}
+
+type EventWallet string
+
+const (
+	EventWalletBalanceAdd EventWallet = "balance.add"
+	EventWalletBalanceDel EventWallet = "balance.del"
+	EventWalletBalanceUpd EventWallet = "balance.upd"
+)
+
+func (e EventWallet) IsValid() bool {
+	switch e {
+	case EventWalletBalanceAdd,
+		EventWalletBalanceDel,
+		EventWalletBalanceUpd:
+		return true
+	}
+	return false
+}
+
+func (e EventWallet) String() string {
+	return string(e)
+}
+
 type Wallet struct {
 	ID         uuid.UUID `json:"id"`
 	UserID     uuid.UUID `json:"user_id"`
@@ -21,6 +98,15 @@ type Wallet struct {
 	CreateTime time.Time `json:"create_at"`
 	UpdateTime time.Time `json:"update_at"`
 	Version    string    `json:"version"`
+}
+
+type WalletUserIDRequest struct {
+	UserID uuid.UUID `json:"user_id"`
+}
+
+type WalletBalanceRequest struct {
+	WalletUserIDRequest
+	Sum int `json:"sum"`
 }
 
 type WalletUsecase interface {

@@ -2,7 +2,7 @@ package ent
 
 import (
 	"github.com/ftomza/go-qcbalu/domain"
-	"github.com/ftomza/go-qcbalu/pkg/entplus"
+	"github.com/ftomza/go-qcbalu/pkg/util"
 )
 
 // DomainWallet domain.Wallet object
@@ -11,14 +11,14 @@ type DomainWallet domain.Wallet
 // ToWallet Convert to Wallet entity
 func (w DomainWallet) ToWallet() *Wallet {
 	item := &Wallet{}
-	entplus.MustCopyValue(item, &w)
+	util.MustCopyValue(item, &w)
 	return item
 }
 
 // ToDomainWallet Convert to domain.Wallet object
 func (w Wallet) ToDomainWallet() *domain.Wallet {
 	item := &domain.Wallet{}
-	entplus.MustCopyValue(item, &w)
+	util.MustCopyValue(item, &w)
 	return item
 }
 
