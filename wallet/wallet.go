@@ -136,6 +136,10 @@ func NewEnt(config *viperplus.Viper, logger *zapplus.Logger) *ent.Client {
 		logger.Fatal("Migration schema", zap.Error(err))
 	}
 
+	if config.GetDebug() {
+		client = client.Debug()
+	}
+
 	return client
 }
 
