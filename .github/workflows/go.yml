@@ -33,4 +33,4 @@ jobs:
         go build -v -o service ./wallet/service/app.go
 
     - name: Test
-      run: go test -v .
+      run: go test -v ./...
